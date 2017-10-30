@@ -1,0 +1,9 @@
+# specific folders are ignored
+/.metadata/
+/.recommenders/
+/.sonarlint/
+/RemoteSystemsTempFiles/
+
+# certain folders and file types are ignored no matter where they occur
+**/target/
+**/*.class
