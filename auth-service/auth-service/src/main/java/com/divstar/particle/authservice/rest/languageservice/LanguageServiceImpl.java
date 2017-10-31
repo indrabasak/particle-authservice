@@ -29,16 +29,15 @@ public class LanguageServiceImpl implements LanguageService {
 	}
 
 	/**
-	 * This method sets the default language in {@link Language}.
+	 * This method invokes methods once the application finished starting up.
 	 * <p>
 	 * In particular it uses {@link Language#setDefaultLanguage(Language) to set the default language retrieved using
 	 * {@link LanguageService#getDefaultLanguage()}.
 	 * <p>
-	 * <i>Note:</i> this method is invoked once the application finished starting up. The default language (first in list) is not supposed
-	 * to change during service-uptime.
+	 * <i>Note:</i> the default language (first in list) is not supposed to change during service-uptime.
 	 */
 	@EventListener(ApplicationReadyEvent.class)
-	private void setDefaultLanguageOnStartup() {
+	private void initOnApplicationReady() {
 		Language.setDefaultLanguage(
 				languageRepository.findAll().stream().findFirst().orElseThrow(NoLanguageFoundException::new));
 	}

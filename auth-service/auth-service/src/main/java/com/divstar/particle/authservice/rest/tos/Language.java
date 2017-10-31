@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity(name = "Languages")
 public class Language {
-	private static Language DEFAULT_LANGUAGE;
+	private static Language defaultLanguage;
 
 	@Id
 	@Column(nullable = false, unique = true)
@@ -35,11 +35,33 @@ public class Language {
 	private boolean	localizeUi = false;
 	private boolean	canChoose  = false;
 
-	public static void setDefaultLanguage(final Language defaultLanguage) {
-		Language.DEFAULT_LANGUAGE = defaultLanguage;
+	@Override
+	public String toString() {
+		return new StringBuilder(Language.class.getSimpleName())
+																.append(" {")
+																.append("languageCode : '").append(languageCode).append("',")
+																.append("name : '").append(name).append("',")
+																.append("i18nName : '").append(i18nName).append("',")
+																.append("localizeUi : '").append(localizeUi).append("',")
+																.append("canChoose : '").append(canChoose)
+																.append("'}")
+																.toString();
 	}
 
+	/**
+	 * This method sets the class attribute {@link Language#defaultLanguage}.
+	 * 
+	 * @param defaultLanguage
+	 *            ({@link Language}) default language
+	 */
+	public static void setDefaultLanguage(final Language defaultLanguage) {
+		Language.defaultLanguage = defaultLanguage;
+	}
+
+	/**
+	 * @return ({@link Language}) default language
+	 */
 	public static Language getDefaultLanguage() {
-		return Language.DEFAULT_LANGUAGE;
+		return Language.defaultLanguage;
 	}
 }

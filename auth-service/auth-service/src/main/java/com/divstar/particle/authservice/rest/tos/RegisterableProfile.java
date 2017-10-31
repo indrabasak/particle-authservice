@@ -13,7 +13,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * This class describes a registerable object.
+ * This class describes a profile, which potentially contains all information required to register a new profile.
  * In contrast to objects of the {@link Credentials}-class objects of this class are usually used for registration purposes.
  * <p>
  * Usually sent from client to this microservice during the registration process.
@@ -33,7 +33,11 @@ public class RegisterableProfile extends Credentials {
 	@Convert(converter = LanguageConverter.class)
 	private Language language;
 
+	/**
+	 * Default constructor.
+	 */
 	public RegisterableProfile() {
+		// set language to default; will be overridden if valid languageCode is provided
 		this.language = Language.getDefaultLanguage();
 	}
 
@@ -43,8 +47,9 @@ public class RegisterableProfile extends Credentials {
 																		   .append(" {")
 																		   .append("name : '").append(getUsername()).append("',")
 																		   .append("password : '").append(getPassword()).append("',")
-																		   .append("email : '").append(email)
-																		   .append("'}")
+																		   .append("email : '").append(email).append("',")
+																		   .append("language : [").append(language.toString())
+																		   .append("]}")
 																		   .toString();
 	}
 }
