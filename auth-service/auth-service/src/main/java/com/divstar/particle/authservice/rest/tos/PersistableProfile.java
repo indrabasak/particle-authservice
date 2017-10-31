@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import com.divstar.particle.authservice.rest.enums.ProfileLevels;
+import com.divstar.particle.authservice.rest.profileservice.enums.ProfileLevels;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

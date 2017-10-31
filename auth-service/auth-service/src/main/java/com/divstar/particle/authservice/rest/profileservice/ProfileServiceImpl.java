@@ -8,13 +8,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.divstar.particle.authservice.exceptions.AccountConfirmErrorException;
-import com.divstar.particle.authservice.exceptions.AccountIsBannedException;
-import com.divstar.particle.authservice.exceptions.AccountNotFoundException;
-import com.divstar.particle.authservice.exceptions.AccountRegistrationEmailExistsException;
-import com.divstar.particle.authservice.exceptions.AccountRegistrationUsernameExistsException;
-import com.divstar.particle.authservice.rest.enums.ProfileLevels;
-import com.divstar.particle.authservice.rest.languageservice.LanguageService;
+import com.divstar.particle.authservice.rest.profileservice.enums.ProfileLevels;
+import com.divstar.particle.authservice.rest.profileservice.exceptions.AccountConfirmErrorException;
+import com.divstar.particle.authservice.rest.profileservice.exceptions.AccountIsBannedException;
+import com.divstar.particle.authservice.rest.profileservice.exceptions.AccountNotFoundException;
+import com.divstar.particle.authservice.rest.profileservice.exceptions.AccountRegistrationEmailExistsException;
+import com.divstar.particle.authservice.rest.profileservice.exceptions.AccountRegistrationUsernameExistsException;
 import com.divstar.particle.authservice.rest.tos.Credentials;
 import com.divstar.particle.authservice.rest.tos.PersistableProfile;
 import com.divstar.particle.authservice.rest.tos.RegisterableProfile;
@@ -26,9 +25,6 @@ public class ProfileServiceImpl implements ProfileService {
 
 	@Autowired
 	private ProfileRepository profileRepository;
-
-	@Autowired
-	private LanguageService languageService;
 
 	@Override
 	public Optional<PersistableProfile> login(final Credentials credentials) {
@@ -56,9 +52,6 @@ public class ProfileServiceImpl implements ProfileService {
 	@Override
 	public PersistableProfile registerAccount(final RegisterableProfile registrationAccount) {
 		final PersistableProfile account = new PersistableProfile(registrationAccount);
-		if (account.getLanguage() == null) {
-			account.setLanguage(languageService.getDefaultLanguage());
-		}
 
 		final boolean usernameExists = profileRepository.existsByUsername(account.getUsername());
 		final boolean emailExists = profileRepository.existsByEmail(account.getEmail());

@@ -1,0 +1,21 @@
+package com.divstar.particle.authservice.rest.languageservice.exceptions;
+
+import com.divstar.particle.authservice.rest.tos.Language;
+
+/**
+ * This exception is thrown if not a single language is present in the LANGUAGES-table ({@link Language}-entity).
+ * 
+ * @author divstar
+ *
+ */
+public class NoLanguageFoundException extends RuntimeException {
+
+	private static final long serialVersionUID = 7285528842799348832L;
+
+	/**
+	 * Constructor.
+	 */
+	public NoLanguageFoundException() {
+		super("No language found!");
+	}
+}

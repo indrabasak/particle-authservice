@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.divstar.particle.authservice.exceptions.AccountLoginFailedException;
 import com.divstar.particle.authservice.rest.jwtservice.JwtService;
+import com.divstar.particle.authservice.rest.profileservice.exceptions.AccountLoginFailedException;
 import com.divstar.particle.authservice.rest.tos.Credentials;
 import com.divstar.particle.authservice.rest.tos.GenericResponse;
 import com.divstar.particle.authservice.rest.tos.PersistableProfile;

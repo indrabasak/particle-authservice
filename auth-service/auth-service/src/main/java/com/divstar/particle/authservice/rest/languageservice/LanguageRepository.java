@@ -2,6 +2,8 @@ package com.divstar.particle.authservice.rest.languageservice;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.divstar.particle.authservice.rest.tos.Language;
+
 /**
  * This interface represents a repository used to <b>access the database</b>.
  * <p>

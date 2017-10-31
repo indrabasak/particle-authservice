@@ -2,6 +2,8 @@ package com.divstar.particle.authservice.rest.languageservice;
 
 import java.util.List;
 
+import com.divstar.particle.authservice.rest.tos.Language;
+
 /**
  * Defines a service used to perform language-specific actions.
  * <i>Note:</i> see http://www.loc.gov/standards/iso639-2/php/code_list.php for a complete list of language-codes.
@@ -17,13 +19,6 @@ public interface LanguageService {
 	 * @return ({@link Language}) language with the given language-code or (if not available) the default language
 	 */
 	Language getLanguage(final String languageCode);
-
-	/**
-	 * This method retrieves the default-language.
-	 * 
-	 * @return ({@link Language}) the default language
-	 */
-	Language getDefaultLanguage();
 
 	/**
 	 * This method attempts to retrieve all languages ({@link Language}-objects).

@@ -4,7 +4,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 
-import com.divstar.particle.authservice.rest.enums.ProfileLevels;
+import com.divstar.particle.authservice.rest.profileservice.enums.ProfileLevels;
 
 public class ProfileLevelsTest {
 	@Test

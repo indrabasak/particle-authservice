@@ -5,8 +5,7 @@ import javax.persistence.Convert;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 
-import com.divstar.particle.authservice.rest.converters.LanguageConverter;
-import com.divstar.particle.authservice.rest.languageservice.Language;
+import com.divstar.particle.authservice.rest.languageservice.converters.LanguageConverter;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.EqualsAndHashCode;
@@ -33,6 +32,10 @@ public class RegisterableProfile extends Credentials {
 	@OneToOne
 	@Convert(converter = LanguageConverter.class)
 	private Language language;
+
+	public RegisterableProfile() {
+		this.language = Language.getDefaultLanguage();
+	}
 
 	@Override
 	public String toString() {
