@@ -9,7 +9,7 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.divstar.particle.authservice.rest.tos.PersistableProfile;
+import com.divstar.particle.authservice.rest.tos.PersistableAccount;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -21,7 +21,7 @@ public class JwtServiceImpl implements JwtService {
 	@Autowired
 	private SecretKeyProvider secretKeyProvider;
 
-	public String tokenFor(final PersistableProfile account) throws IOException, URISyntaxException {
+	public String tokenFor(final PersistableAccount account) throws IOException, URISyntaxException {
 		final byte[] secretKey = secretKeyProvider.getKey();
 		final Date expiration = Date.from(LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.UTC));
 		return Jwts.builder()

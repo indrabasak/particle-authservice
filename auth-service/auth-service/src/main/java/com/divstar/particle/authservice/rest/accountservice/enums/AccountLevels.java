@@ -1,4 +1,4 @@
-package com.divstar.particle.authservice.rest.profileservice.enums;
+package com.divstar.particle.authservice.rest.accountservice.enums;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,7 +17,7 @@ import lombok.ToString;
  */
 @Getter
 @ToString
-public enum ProfileLevels {
+public enum AccountLevels {
 	/**
 	 * Account is (possibly forcefully) suspended.
 	 * <p>
@@ -90,7 +90,7 @@ public enum ProfileLevels {
 	 */
 	CODER(100000);
 
-	private static final List<ProfileLevels> PROFILE_LEVELS = Stream.of(ProfileLevels.values())
+	private static final List<AccountLevels> ACCOUNT_LEVELS = Stream.of(AccountLevels.values())
 																	.sorted((v1, v2) -> Integer.compare(v1.getLevel(), v2.getLevel()))
 																	.collect(Collectors.toList());
 
@@ -102,35 +102,35 @@ public enum ProfileLevels {
 	 * @param level
 	 *            (int) level associated with a given constant
 	 */
-	private ProfileLevels(final int level) {
+	private AccountLevels(final int level) {
 		this.level = level;
 	}
 
 	/**
-	 * This method determines the actual {@link ProfileLevels}-object by a level (int).
+	 * This method determines the actual {@link AccountLevels}-object by a level (int).
 	 * <p>
 	 * <i>Note:</i> since custom levels are allowed, this method simply maps the given level to the closest value,
 	 * that is smaller than the given level value.
 	 * <p>
 	 * <table style="border: 1px dotted #000;" border="1" cellpadding="2">
 	 * <tr><th>Given this input level...</th><th>You would get this enum value</th></tr>
-	 * <tr><td>level = 9000</td><td>{@link ProfileLevels#MODERATOR}</td></tr>
-	 * <tr><td>level = -1500</td><td>{@link ProfileLevels#BANNED}</td></tr>
-	 * <tr><td>level = 111111</td><td>{@link ProfileLevels#CODER}</td></tr>
+	 * <tr><td>level = 9000</td><td>{@link AccountLevels#MODERATOR}</td></tr>
+	 * <tr><td>level = -1500</td><td>{@link AccountLevels#BANNED}</td></tr>
+	 * <tr><td>level = 111111</td><td>{@link AccountLevels#CODER}</td></tr>
 	 * </table>
 	 * 
 	 * @param level
 	 *            (int) any integer specifying an account level;
 	 *            it does not have to correspond to one of the enum values defined in this enum
-	 * @return ({@link ProfileLevels}) the closest enum value
+	 * @return ({@link AccountLevels}) the closest enum value
 	 */
-	public static ProfileLevels fromLevel(final int level) {
-		ProfileLevels previousLevel = ProfileLevels.PROFILE_LEVELS.get(0);
+	public static AccountLevels fromLevel(final int level) {
+		AccountLevels previousLevel = AccountLevels.ACCOUNT_LEVELS.get(0);
 
-		for (int i = 1; i < ProfileLevels.PROFILE_LEVELS.size(); i++) {
-			if (level >= ProfileLevels.PROFILE_LEVELS.get(i).level) {
-				previousLevel = ProfileLevels.PROFILE_LEVELS.get(i);
-			} else if (level < ProfileLevels.PROFILE_LEVELS.get(i).level) {
+		for (int i = 1; i < AccountLevels.ACCOUNT_LEVELS.size(); i++) {
+			if (level >= AccountLevels.ACCOUNT_LEVELS.get(i).level) {
+				previousLevel = AccountLevels.ACCOUNT_LEVELS.get(i);
+			} else if (level < AccountLevels.ACCOUNT_LEVELS.get(i).level) {
 				break;
 			}
 		}

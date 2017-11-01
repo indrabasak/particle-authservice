@@ -1,8 +1,8 @@
-package com.divstar.particle.authservice.rest.profileservice.exceptions;
+package com.divstar.particle.authservice.rest.accountservice.exceptions;
 
 import java.text.MessageFormat;
 
-import com.divstar.particle.authservice.rest.tos.PersistableProfile;
+import com.divstar.particle.authservice.rest.tos.PersistableAccount;
 
 /**
  * This exception is thrown if an account is expected, yet not found.
@@ -21,7 +21,7 @@ public class AccountNotFoundException extends RuntimeException {
 	 * Constructor.
 	 * 
 	 * @param accountId
-	 *            (int) accountId, that had no {@link PersistableProfile}-object corresponding to it
+	 *            (int) accountId, that had no {@link PersistableAccount}-object corresponding to it
 	 */
 	public AccountNotFoundException(final int accountId) {
 		super(MessageFormat.format("No account was found for given accountId (ID = ''{0}'')!", accountId));

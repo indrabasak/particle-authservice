@@ -1,4 +1,4 @@
-package com.divstar.particle.authservice.rest.profileservice.exceptions;
+package com.divstar.particle.authservice.rest.accountservice.exceptions;
 
 /**
  * This exception is thrown if an account is expected to be created (during the registration process),

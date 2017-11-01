@@ -13,7 +13,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * This class describes a profile, which potentially contains all information required to register a new profile.
+ * This class describes an account, which potentially contains all information required to register a new profile.
  * In contrast to objects of the {@link Credentials}-class objects of this class are usually used for registration purposes.
  * <p>
  * Usually sent from client to this microservice during the registration process.
@@ -25,7 +25,7 @@ import lombok.Setter;
 @EqualsAndHashCode(callSuper = true)
 @MappedSuperclass
 @JsonInclude(JsonInclude.Include.ALWAYS)
-public class RegisterableProfile extends Credentials {
+public class RegisterableAccount extends Credentials {
 	@Column(nullable = false, unique = true)
 	private String email;
 
@@ -36,14 +36,14 @@ public class RegisterableProfile extends Credentials {
 	/**
 	 * Default constructor.
 	 */
-	public RegisterableProfile() {
+	public RegisterableAccount() {
 		// set language to default; will be overridden if valid languageCode is provided
 		this.language = Language.getDefaultLanguage();
 	}
 
 	@Override
 	public String toString() {
-		return new StringBuilder(RegisterableProfile.class.getSimpleName())
+		return new StringBuilder(RegisterableAccount.class.getSimpleName())
 																		   .append(" {")
 																		   .append("name : '").append(getUsername()).append("',")
 																		   .append("password : '").append(getPassword()).append("',")

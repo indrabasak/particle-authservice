@@ -1,4 +1,4 @@
-package com.divstar.particle.authservice.rest.profileservice.exceptions;
+package com.divstar.particle.authservice.rest.accountservice.exceptions;
 
 import java.text.MessageFormat;
 

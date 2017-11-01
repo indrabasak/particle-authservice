@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import com.divstar.particle.authservice.rest.profileservice.enums.ProfileLevels;
+import com.divstar.particle.authservice.rest.accountservice.enums.AccountLevels;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -15,8 +15,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * This class describes a complete persisted profile object.
- * In contrast to objects of the {@link RegisterableProfile}-class objects of this class resemble a persisted user profile in the database.
+ * This class describes a complete account object, which can be persisted.
+ * In contrast to objects of the {@link RegisterableAccount}-class objects of this class resemble a persisted user account in the database.
  * <p>
  * Usually issued from this microservice to the client after successful user authentication.
  * 
@@ -26,8 +26,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-@Entity(name = "Profiles")
-public class PersistableProfile extends RegisterableProfile {
+@Entity(name = "Accounts")
+public class PersistableAccount extends RegisterableAccount {
 
 	@Id
 	@GeneratedValue
@@ -41,12 +41,12 @@ public class PersistableProfile extends RegisterableProfile {
 	private String		  sha1;
 	private String		  sha256;
 	@Column(nullable = false)
-	private ProfileLevels level		= ProfileLevels.PENDING;
+	private AccountLevels level		= AccountLevels.PENDING;
 	private LocalDateTime joined;
 	private LocalDateTime lastVisited;
 
-	public PersistableProfile(final RegisterableProfile registrationAccount) {
-		// Take username and password and create a persistable profile
+	public PersistableAccount(final RegisterableAccount registrationAccount) {
+		// Take username and password and create a persistable account
 		this.setUsername(registrationAccount.getUsername());
 		this.setPassword(registrationAccount.getPassword());
 		// Set Registerable-attributes
@@ -56,7 +56,7 @@ public class PersistableProfile extends RegisterableProfile {
 
 	@Override
 	public String toString() {
-		return new StringBuilder(PersistableProfile.class.getSimpleName())
+		return new StringBuilder(PersistableAccount.class.getSimpleName())
 																		  .append(" {")
 																		  .append("id : '").append(getId()).append("',")
 																		  .append("name : '").append(getUsername()).append("',")
