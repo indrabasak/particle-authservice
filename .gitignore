@@ -7,3 +7,9 @@
 # certain folders and file types are ignored no matter where they occur
 **/target/
 **/*.class
+
+### JetBrains template
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
+
+*.iml
+.idea/
